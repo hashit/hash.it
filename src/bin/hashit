@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+#
+#        DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+#                    Version 2, December 2004 
+#
+# Copyright (C) 2013 Art. <art@fuffa.org> 
+#
+# Everyone is permitted to copy and distribute verbatim or modified 
+# copies of this license document, and changing it is allowed as long 
+# as the name is changed. 
+#
+#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+#   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
+#
+#  0. You just DO WHAT THE FUCK YOU WANT TO.
+# 
+# hashes to hashes and crypto to crypto
+# https://www.youtube.com/watch?v=CMThz7eQ6K0
+
+import sys
+import os
+from urlparse import urlparse
+
+from hashit.hashes import Hasher
+from hashit.download import Downloader
+
+def err(s):
+    print "[!] %s" % s
+
+def msg(s):
+    print "[*] %s" % s
+
+def usage():
+    print "usage: %s [url] [dst]" % sys.argv[0]
+    print "Options and arguments:"
+    print "-h   : display this help message."
+    print "url  : the url to download and verify the hash of."
+    print "dst  : (optional) the destination where the file should be saved to."
+
+def is_url(url):
+    supported_schemes = ('http', 'https')
+    parsed_url = urlparse(url)
+    if not parse_url.scheme in supported_schemes:
+        return False
+    else:
+        return True
+
+if len(sys.argv) < 2:
+    usage()
+elif sys.argv[1] == '-h':
+    usage()
+elif os.path.isfile(sys.argv[1]):
+    hasher = Hasher()
+    hasher.verify(sys.argv[1])
+elif is_url(sys.argv[1]):
+    downloader = Downloader(sys.argv[1])
+    downloader.download_and_verify()
